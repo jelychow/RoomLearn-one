@@ -18,7 +18,6 @@ public class RoomApplication extends Application {
         super.onCreate();
         mAppExecutors = new AppExecutors();
         roomApplication = this;
-
         appDatabase= AppDatabase.getInstance(this,mAppExecutors);
     }
 }

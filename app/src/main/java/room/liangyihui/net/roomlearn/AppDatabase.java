@@ -73,17 +73,23 @@ public abstract class AppDatabase extends RoomDatabase {
                             // Add a delay to simulate a long-running operation
                             // Generate the data for pre-population
                             AppDatabase database = AppDatabase.getInstance(appContext, executors);
-                            List<User> users = new ArrayList<>();
-                            User user=new  User(1,"1","1");
-                            users.add(user);
-                            user.setUserId(2);
-                            User user2 = user;
+//                            List<User> users = new ArrayList<>();
+                            User user=new  User(2,"1","1");
+                            User user2=new  User(3,"1","1");
+
+//                            users.add(user);
+//                            user.setUserId(2);
+//                            User user2 = user;
                            User [] users1= new User[] {
                                    user,  user2
                            } ;
                             database.runInTransaction(() -> {
                                 try {
                                     database.userDao().insertAll(users1);
+
+                                    Log.d("buildDatabase",""+  database.userDao().getAll().size());
+
+
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
