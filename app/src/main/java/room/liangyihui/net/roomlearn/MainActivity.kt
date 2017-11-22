@@ -21,7 +21,9 @@ class MainActivity : AppCompatActivity() {
 
                 var list = RoomApplication.appDatabase.userDao().all;
 
-                var name = RoomApplication.appDatabase.userDao().getId(2).firstName
+                var user: User? = RoomApplication.appDatabase.userDao().getId(2) ?: return@execute
+
+                var name = user?.firstName
                 Log.d("buildDatabase", "diskIO")
                 Log.d("buildDatabase", ""+name)
 

@@ -77,11 +77,13 @@ public abstract class AppDatabase extends RoomDatabase {
                             User user=new  User(1,"1","1");
                             users.add(user);
                             user.setUserId(2);
-                            users.add(user);
-
+                            User user2 = user;
+                           User [] users1= new User[] {
+                                   user,  user2
+                           } ;
                             database.runInTransaction(() -> {
                                 try {
-                                    database.userDao().insertAll(users);
+                                    database.userDao().insertAll(users1);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
